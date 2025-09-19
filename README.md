@@ -1,6 +1,5 @@
-Fraud Detection with a Two-Stage ML Pipeline
-Summary
 🕵️ Fraud Detection with a Two-Stage ML Pipeline
+Summary:
 This project demonstrates a real-world fraud detection pipeline built on credit card transaction data. Fraud is rare (<1% of cases), so the challenge is to catch nearly all fraudulent activity (high recall) while minimizing false alarms that frustrate customers.
 I designed a two-stage approach:
 Stage 1 (XGBoost): casts a wide net, capturing almost all fraud.
@@ -11,7 +10,7 @@ Build end-to-end machine learning pipelines.
 Engineer domain-specific features (transaction distance, timing, customer spending patterns).
 Optimize models with a focus on business impact, not just raw accuracy.
 
-Detailed Overview
+Detailed Overview:
 Credit card fraud is rare but costly. Detecting it requires models that maximize recall (catching all fraud) without overwhelming customers and banks with false alarms.
 In this project, I build a two-stage fraud detection pipeline:
 Stage 1 (Broad Net): An XGBoost classifier tuned for very high recall (~0.98).
