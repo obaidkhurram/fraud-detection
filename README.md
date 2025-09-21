@@ -38,9 +38,8 @@ Confusion Matrix:
 Recall: 0.84 (most fraud still caught)
 Precision: 0.88 (false positives cut dramatically)
 F1-Score (Fraud class): 0.86
-Accuracy: ~99.8%
-Precision-Recall Curve
-(PR curve image here, showing Stage 1 vs. 2-Stage pipeline)
+Accuracy: ~99.8% (Not that accuracy matters much in this type of problem with rare classes)
+
 Features Engineered
 Transaction timing: time since last transaction, transaction hour/day.
 Geography: transaction distance (lat/lon).
