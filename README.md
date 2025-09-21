@@ -5,6 +5,7 @@ I designed a two-stage approach:
 Stage 1 (XGBoost): casts a wide net, capturing almost all fraud.
 Stage 2 (Random Forest): refines predictions only on flagged cases, greatly improving precision.
 The result is a pipeline that balances business risk (don’t miss fraud) with customer experience (don’t block legitimate transactions).
+
 This project highlights my ability to:
 Build end-to-end machine learning pipelines.
 Engineer domain-specific features (transaction distance, timing, customer spending patterns).
@@ -20,6 +21,7 @@ Stage 2 (Refinement): A Random Forest classifier applied only to Stage 1 positiv
 Analogy: like a confirmatory test (e.g., biopsy).
 Goal: improve precision by filtering out false positives.
 This mirrors real-world fraud pipelines: start broad, then refine.
+
 Key Challenges
 Class imbalance: Fraud cases are <1% of transactions.
 Cost asymmetry: Missing fraud (false negatives) is much worse than wrongly flagging a legitimate transaction (false positives).
@@ -50,7 +52,7 @@ Python: pandas, numpy, scikit-learn, XGBoost
 Modeling: Random Forest, Gradient Boosting (XGB)
 Visualization: seaborn, matplotlib
 Evaluation: precision-recall curves, confusion matrices, F1/F2 scoring
-Why This Matters
+
 This project shows how to:
 Design pipelines that reflect business risk tradeoffs.
 Engineer domain-specific features to boost fraud detection.
