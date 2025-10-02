@@ -56,9 +56,5 @@ Design pipelines that reflect business risk tradeoffs.
 Engineer domain-specific features to boost fraud detection.
 Use a layered modeling approach to balance recall and precision.
 Communicate technical results in an intuitive, business-facing way.
-Next Steps
-Hyperparameter tuning with cross-validation.
-Experiment with alternative second-stage models (Logistic Regression, LightGBM).
-Explore unsupervised anomaly detection as an auxiliary signal.
 
-⚡ Impact: A bank could use this pipeline to cut false alarms by >85% while still catching nearly all fraud.
+⚡ Impact: A bank could use this pipeline to cut false alarms by >95% while still catching nearly all fraud.
