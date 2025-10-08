@@ -27,18 +27,17 @@ Class imbalance: Fraud cases are <1% of transactions.
 Cost asymmetry: Missing fraud (false negatives) is much worse than wrongly flagging a legitimate transaction (false positives).
 Customer impact: Over-flagging leads to poor user experience.
 Results
-Stage 1 (XGBoost Only)
-Recall: ~0.98
-Precision: ~0.14
-Takeaway: Excellent fraud capture, but too many false alarms.
-Two-Stage Pipeline (XGBoost → Random Forest)
-Confusion Matrix:
-[[67525    41]
- [   57   299]]
-Recall: 0.84 (most fraud still caught)
-Precision: 0.88 (false positives cut dramatically)
-F1-Score (Fraud class): 0.86
-Accuracy: ~99.8% (Not that accuracy matters much in this type of problem with rare classes)
+As we see from the confusion matrix and other metrics, this is an excellent result from our 2-stage pipeline. Out of almost 70K transactions in the test data set, only 8 fraudulent transactions were missed (recall = 0.98). While maintaining this high recall, we also optimized for precision (0.98), falsely identifying only 7 non-fraudulent transactions as fraudulent.
+
+The initial screening (XGB) captured most of the fraudulent transactions (i.e., high recall) and further gains in fraud detection did not occur with Stage 2 (RF). However, Stage 1 also labeled almost 3K+ transactions as fraudulent when they were in fact not (precision = 0.11). This was clearly not acceptable, as it translates to annoying messages to customers or unnecessarily blocked transactions. Would you want to use a card like that? Accordingly, Stage 2 utilized a custom scorer to set a high floor for recall (at least 0.9) while optimizing for precision. The Stage 2 RF model was trained on the original training data set, but applied only to the positives identified from the first screening.
+
+**Two Stage Pipeline Confusion Matrix (Stage 1 -> Stage 2)**
+
+|                 | Predicted: Not Fraud | Predicted: Fraud |
+|-----------------|-----------------------|------------------|
+| **Actual: Not Fraud** | 64706 → 67559        | 2860 → 7         |
+| **Actual: Fraud**     | 8 → 8                | 348 → 348        |
+
 
 Features Engineered
 Transaction timing: time since last transaction, transaction hour/day.
@@ -57,9 +56,5 @@ Design pipelines that reflect business risk tradeoffs.
 Engineer domain-specific features to boost fraud detection.
 Use a layered modeling approach to balance recall and precision.
 Communicate technical results in an intuitive, business-facing way.
-Next Steps
-Hyperparameter tuning with cross-validation.
-Experiment with alternative second-stage models (Logistic Regression, LightGBM).
-Explore unsupervised anomaly detection as an auxiliary signal.
 
-⚡ Impact: A bank could use this pipeline to cut false alarms by >85% while still catching nearly all fraud.
+⚡ Impact: A bank could use this pipeline to cut false alarms by >95% while still catching nearly all fraud.
